@@ -6,10 +6,13 @@
   overflow: hidden;
   background: #ffecb3;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 20px;
 }
 
+/* Texto de bienvenida */
 .love-message {
   font-size: 40px;
   font-weight: bold;
@@ -21,6 +24,7 @@
   z-index: 2;
 }
 
+/* Cortinas */
 .curtain {
   position: absolute;
   top: 0;
@@ -38,8 +42,14 @@
   right: 0;
 }
 
+/* Contenido principal */
+.content {
+  max-width: 600px;
+  width: 90%;
+}
+
 .panel-title {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
   color: #9e17ec;
 }
@@ -50,78 +60,58 @@
   color: #555;
 }
 
+/* Botones */
 .panel-buttons {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  align-items: center;
 }
 
 .panel-button {
   text-decoration: none;
-  padding: 10px 20px;
+  padding: 12px 24px;
   font-size: 18px;
   background-color: #b22fd3;
   color: white;
   border-radius: 10px;
   transition: 0.3s ease;
+  text-align: center;
+  width: 80%;
+  max-width: 300px;
 }
 
 .panel-button:hover {
   background-color: #9d1cb7;
 }
 
-/* ───────────────────────────────────────────
-   RESPONSIVE MEDIA QUERIES
-   ─────────────────────────────────────────── */
-
-/* Celulares Pequeños (máx 480px) */
-@media (max-width: 480px) {
-  .love-message {
-    font-size: 24px;
-  }
-  .panel-title {
-    font-size: 20px;
-  }
-  .panel-subtitle {
-    font-size: 16px;
-    margin-bottom: 15px;
-  }
-  .panel-button {
-    font-size: 16px;
-    padding: 8px 15px;
-  }
-}
-
-/* Tablets y Pantallas Medias (481px - 1024px) */
-@media (min-width: 481px) and (max-width: 1024px) {
-  .love-message {
-    font-size: 32px;
-  }
+/* 📱 Responsividad */
+@media (max-width: 768px) {
   .panel-title {
     font-size: 22px;
   }
+
   .panel-subtitle {
-    font-size: 17px;
+    font-size: 16px;
   }
+
   .panel-button {
-    font-size: 17px;
-    padding: 10px 18px;
+    font-size: 16px;
+    padding: 10px 20px;
   }
 }
 
-/* Laptops y Desktop (más de 1024px) */
-@media (min-width: 1025px) {
-  .love-message {
-    font-size: 40px;
-  }
+@media (max-width: 480px) {
   .panel-title {
-    font-size: 24px;
+    font-size: 20px;
   }
+
   .panel-subtitle {
-    font-size: 18px;
+    font-size: 14px;
   }
+
   .panel-button {
-    font-size: 18px;
-    padding: 10px 20px;
+    font-size: 14px;
+    padding: 8px 16px;
   }
 }

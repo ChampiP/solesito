@@ -40,11 +40,11 @@ const PanelPrincipal = () => {
         >
           <h1 className="panel-title">✨ My pedazo de sol, esto es para ti ✨</h1>
           <p className="panel-subtitle">
-            Bélgica, eres una gran mujer, todo esto es para ti te amo de aqui asta el infinito recuerda que te esperare por siempre💖
+            Bélgica, eres una gran mujer, todo esto es para ti te amo 💖
           </p>
 
           <div className="panel-buttons">
-            <Link to="/chat" className="panel-button">💬 Chat Secreto</Link>
+            <Link to="/chat" className="panel-button">💬 en proceso</Link>
             <Link to="/cartas" className="panel-button">💌 ¿Necesitas aliento?</Link>
             <Link to="/carrusel" className="panel-button">📍 Mapa del Amor</Link>
           </div>
