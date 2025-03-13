@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 import "./GaleriaFotos.css";
 
-const totalFotos = 17; // Número total de imágenes
+const totalFotos = 39; // Número total de imágenes
+const videoSrc = require("../assets/video.mp4"); // Ruta del video
 
 const GaleriaFotos = () => {
-  const [fotoSeleccionada, setFotoSeleccionada] = useState(null);
+  const [mediaSeleccionada, setMediaSeleccionada] = useState(null);
 
-  const abrirFoto = (src) => {
-    setFotoSeleccionada(src);
+  const abrirMedia = (src) => {
+    setMediaSeleccionada(src);
   };
 
-  const cerrarFoto = () => {
-    setFotoSeleccionada(null);
+  const cerrarMedia = () => {
+    setMediaSeleccionada(null);
   };
 
   return (
     <div className="galeria-container">
-      <h2>📸 Galería de Fotos</h2>
+      <h2>📸 Galería de Fotos y Videos</h2>
       <div className="grid">
         {Array.from({ length: totalFotos }, (_, i) => (
           <img
@@ -24,16 +25,28 @@ const GaleriaFotos = () => {
             src={require(`../assets/foto${i + 1}.jpg`)}
             alt={`Foto ${i + 1}`}
             className="imagen"
-            onClick={() => abrirFoto(require(`../assets/foto${i + 1}.jpg`))}
+            onClick={() => abrirMedia(require(`../assets/foto${i + 1}.jpg`))}
           />
         ))}
+
+        {/* Video */}
+        <video
+          className="video-preview"
+          src={videoSrc}
+          controls
+          onClick={() => abrirMedia(videoSrc)}
+        />
       </div>
 
-      {/* Modal para ampliar la imagen */}
-      {fotoSeleccionada && (
-        <div className="modal" onClick={cerrarFoto}>
+      {/* Modal para ampliar la imagen o video */}
+      {mediaSeleccionada && (
+        <div className="modal" onClick={cerrarMedia}>
           <div className="modal-content">
-            <img src={fotoSeleccionada} alt="Foto ampliada" />
+            {mediaSeleccionada.includes(".mp4") ? (
+              <video src={mediaSeleccionada} controls autoPlay />
+            ) : (
+              <img src={mediaSeleccionada} alt="Foto ampliada" />
+            )}
           </div>
         </div>
       )}
