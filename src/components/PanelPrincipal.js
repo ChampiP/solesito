@@ -38,9 +38,9 @@ const PanelPrincipal = () => {
           transition={{ duration: 1 }}
           className="content"
         >
-          <h1 className="panel-title">✨ Bienvenida, esto es para ti ✨</h1>
+          <h1 className="panel-title">✨ My pedazo de sol, esto es para ti ✨</h1>
           <p className="panel-subtitle">
-            Bélgica, eres una gran mujer, todo esto es para ti 💖
+            Bélgica, eres una gran mujer, todo esto es para ti te amo de aqui asta el infinito recuerda que te esperare por siempre💖
           </p>
 
           <div className="panel-buttons">

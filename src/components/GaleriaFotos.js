@@ -5,47 +5,52 @@ const totalFotos = 39; // Número total de imágenes
 const videoSrc = require("../assets/video.mp4"); // Ruta del video
 
 const GaleriaFotos = () => {
-  const [mediaSeleccionada, setMediaSeleccionada] = useState(null);
+  const [seleccionado, setSeleccionado] = useState(null);
+  const [esVideo, setEsVideo] = useState(false);
 
-  const abrirMedia = (src) => {
-    setMediaSeleccionada(src);
+  const abrirElemento = (src, tipo) => {
+    setSeleccionado(src);
+    setEsVideo(tipo === "video");
   };
 
-  const cerrarMedia = () => {
-    setMediaSeleccionada(null);
+  const cerrarElemento = () => {
+    setSeleccionado(null);
+    setEsVideo(false);
   };
 
   return (
     <div className="galeria-container">
-      <h2>📸 Galería de Fotos y Videos</h2>
+      <h2>📸 Galería de Fotos</h2>
       <div className="grid">
+        {/* Mostrar imágenes */}
         {Array.from({ length: totalFotos }, (_, i) => (
           <img
             key={i}
             src={require(`../assets/foto${i + 1}.jpg`)}
             alt={`Foto ${i + 1}`}
             className="imagen"
-            onClick={() => abrirMedia(require(`../assets/foto${i + 1}.jpg`))}
+            onClick={() => abrirElemento(require(`../assets/foto${i + 1}.jpg`), "imagen")}
           />
         ))}
 
-        {/* Video */}
+        {/* Mostrar video */}
         <video
-          className="video-preview"
+          className="imagen"
+          onClick={() => abrirElemento(videoSrc, "video")}
           src={videoSrc}
-          controls
-          onClick={() => abrirMedia(videoSrc)}
+          muted
+          loop
         />
       </div>
 
-      {/* Modal para ampliar la imagen o video */}
-      {mediaSeleccionada && (
-        <div className="modal" onClick={cerrarMedia}>
+      {/* Modal para ampliar imagen o video */}
+      {seleccionado && (
+        <div className="modal" onClick={cerrarElemento}>
           <div className="modal-content">
-            {mediaSeleccionada.includes(".mp4") ? (
-              <video src={mediaSeleccionada} controls autoPlay />
+            {esVideo ? (
+              <video src={seleccionado} controls autoPlay />
             ) : (
-              <img src={mediaSeleccionada} alt="Foto ampliada" />
+              <img src={seleccionado} alt="Ampliado" />
             )}
           </div>
         </div>
