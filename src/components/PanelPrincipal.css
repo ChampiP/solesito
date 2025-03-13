@@ -1,37 +1,27 @@
 .panel-container {
-  text-align: center;
-  height: 100vh;
-  width: 100vw;
-  position: relative;
-  overflow: hidden;
-  background: #ffecb3;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  height: 100vh;
+  background: #ffebcd;
+  text-align: center;
+  overflow: hidden;
 }
 
-/* Texto de bienvenida */
 .love-message {
-  font-size: 40px;
+  font-size: 32px;
+  color: #ff48a3;
   font-weight: bold;
-  color: rgb(164, 79, 197);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
 }
 
-/* Cortinas */
 .curtain {
   position: absolute;
   top: 0;
   width: 50%;
   height: 100%;
-  background-color: rgb(183, 0, 255);
-  z-index: 1;
+  background: #ff69b4;
+  z-index: 10;
 }
 
 .left {
@@ -42,51 +32,49 @@
   right: 0;
 }
 
-/* Contenido principal */
 .content {
-  max-width: 600px;
-  width: 90%;
+  z-index: 5;
+  padding: 20px;
 }
 
 .panel-title {
   font-size: 28px;
   font-weight: bold;
-  color: #9e17ec;
+  color: #ff1493;
 }
 
 .panel-subtitle {
   font-size: 18px;
-  margin-bottom: 20px;
-  color: #555;
+  color: #ff4500;
 }
 
-/* Botones */
 .panel-buttons {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  align-items: center;
+  margin-top: 20px;
 }
 
 .panel-button {
   text-decoration: none;
-  padding: 12px 24px;
-  font-size: 18px;
-  background-color: #b22fd3;
+  background: #ff1493;
   color: white;
+  padding: 12px 20px;
   border-radius: 10px;
-  transition: 0.3s ease;
-  text-align: center;
-  width: 80%;
-  max-width: 300px;
+  font-size: 18px;
+  transition: all 0.3s ease;
 }
 
 .panel-button:hover {
-  background-color: #9d1cb7;
+  background: #b300a4;
 }
 
-/* 📱 Responsividad */
-@media (max-width: 768px) {
+/* 📱 Estilos Responsivos */
+@media (max-width: 600px) {
+  .love-message {
+    font-size: 24px;
+  }
+
   .panel-title {
     font-size: 22px;
   }
@@ -97,21 +85,6 @@
 
   .panel-button {
     font-size: 16px;
-    padding: 10px 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .panel-title {
-    font-size: 20px;
-  }
-
-  .panel-subtitle {
-    font-size: 14px;
-  }
-
-  .panel-button {
-    font-size: 14px;
-    padding: 8px 16px;
+    padding: 10px 15px;
   }
 }

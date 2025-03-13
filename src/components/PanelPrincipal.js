@@ -7,29 +7,31 @@ const PanelPrincipal = () => {
   const [showOptions, setShowOptions] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       setShowOptions(true);
     }, 2000);
+
+    return () => clearTimeout(timeout); // Limpieza para evitar fugas de memoria
   }, []);
 
   return (
     <div className="panel-container">
       {!showOptions ? (
         <>
-          {/* Cortinas */}
-          <motion.div
-            className="curtain left"
-            initial={{ x: 0 }}
-            animate={{ x: "-100%" }}
-            transition={{ duration: 2, ease: "easeInOut" }}
-          />
-          <motion.div
-            className="curtain right"
-            initial={{ x: 0 }}
-            animate={{ x: "100%" }}
-            transition={{ duration: 2, ease: "easeInOut" }}
-          />
-          <h1 className="love-message">🎉 Feliz cumpleaños ❤️</h1>
+          {/* Cortinas animadas */}
+          {["left", "right"].map((side) => (
+            <motion.div
+              key={side}
+              className={`curtain ${side}`}
+              initial={{ x: 0 }}
+              animate={{ x: side === "left" ? "-100%" : "100%" }}
+              transition={{ duration: 2, ease: "easeInOut" }}
+            />
+          ))}
+
+          <h1 className="love-message" aria-live="polite">
+            🎉 Feliz cumpleaños ❤️
+          </h1>
         </>
       ) : (
         <motion.div
@@ -40,14 +42,26 @@ const PanelPrincipal = () => {
         >
           <h1 className="panel-title">✨ My pedazo de sol, esto es para ti ✨</h1>
           <p className="panel-subtitle">
-            Bélgica, eres una gran mujer, todo esto es para ti te amo 💖
+            Bélgica, eres una gran mujer, todo esto es para ti. Te amo 💖
+            te amo del infinito para mas alla vuelve pronto
           </p>
 
-          <div className="panel-buttons">
-            <Link to="/chat" className="panel-button">💬 en proceso</Link>
-            <Link to="/cartas" className="panel-button">💌 ¿Necesitas aliento?</Link>
-            <Link to="/carrusel" className="panel-button">📍 Mapa del Amor</Link>
-          </div>
+          <motion.div
+            className="panel-buttons"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 1 }}
+          >
+            <Link to="/chat" className="panel-button">
+              💬 en proceso
+            </Link>
+            <Link to="/cartas" className="panel-button">
+              💌 ¿Necesitas aliento?
+            </Link>
+            <Link to="/carrusel" className="panel-button">
+              📍 Mapa del Amor
+            </Link>
+          </motion.div>
         </motion.div>
       )}
     </div>
